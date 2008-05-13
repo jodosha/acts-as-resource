@@ -51,6 +51,10 @@ For old 1.2.x people you should live in the edge, cause ActiveResource is needed
 Install
 =======
 
+  Rails 2.1.x
+  $ ./script/plugin install git://github.com/jodosha/acts-as-resource.git
+
+  Rails <= 2.0.x
   $ ./script/plugin install http://dev.23labs.net/svn/rails/plugins/acts_as_resource
 
 Uninstall
@@ -72,13 +76,15 @@ Contribute
 ==========
 
   * Check out the code and test it:
-    $ svn co http://dev.23labs.net/svn/rails/plugins/acts_as_resource
+    $ git clone git://github.com/jodosha/acts-as-resource.git
     $ rake resource
 
   * Create a ticket to: http://dev.23labs.net/rails/trac.cgi
 
   * Create a patch and add as attachement to the ticket.
+  
+  * The SVN repo has been deprecated in favor of the Git one.
 
 
 
-Copyright (c) 2007 Luca Guidi - 23 Labs, released under the MIT license
+Copyright (c) 2007-2008 Luca Guidi - http://lucaguidi.com, released under the MIT license
