@@ -1,0 +1,7 @@
+author: Luca Guidi
+email: guidi.luca@gmail.com
+homepage: http://lucaguidi.com/pages/acts-as-resource
+summary: ActsAsResource combines ActiveRecord and ActiveResource features in *one* class
+description: Acts As Resource allow to mixin local and remote models, just merging both ActiveRecord and ActiveResource APIs
+license: MIT
+version: 2.0.2
