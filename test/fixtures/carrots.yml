@@ -1,0 +1,9 @@
+orange:
+  id: 1
+  bunny_id: 1
+  color: orange
+
+brown:
+  id: 2
+  bunny_id: 2
+  color: brown

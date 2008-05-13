@@ -1,0 +1,84 @@
+ActsAsResource
+==============
+
+ActsAsResource combines ActiveRecord and ActiveResource features in *one* class.
+
+Example
+=======
+
+class Carrot
+  acts_as_resource
+  self.site = 'http://localhost:3000'
+  
+  belongs_to :bunny
+
+  validates_presence_of :color
+  validates_uniqueness_of :color
+  validates_length_of :color, :within => 2..23,
+                      :if => lambda { |c| c.color && !c.color.empty? }
+  validates_format_of :color,
+                      :with => /[\w\s]+$/,
+                      :if => lambda { |c| c.color && !c.color.empty? }
+
+  before_create :please_call_me_before_create
+  def self.validate
+    logger.debug("VALIDATE #{color}")
+  end
+  
+  def please_call_me_before_create
+    logger.debug("Ohhh, so you called me..")
+  end  
+end
+
+Usage
+=====
+
+For convention each operation is *local* unless specified with :remote flag.
+
+carrot = Carrot.find(23)                   # => local request
+carrot = Carrot.find(23, :remote => false) # => local request
+carrot = Carrot.find(23, :remote => true)  # => remote request
+
+Carrot.create(:color => 'orange')                  # => create local
+Carrot.create(:color => 'orange', :remote => true) # => create remote
+
+Prerequisites
+=============
+
+For 2.0 railists: no problem guys!
+For old 1.2.x people you should live in the edge, cause ActiveResource is needed.
+
+Install
+=======
+
+  $ ./script/plugin install http://dev.23labs.net/svn/rails/plugins/acts_as_resource
+
+Uninstall
+=========
+
+  $ ./script/plugin remove acts_as_resource
+
+Common Issues
+=============
+
+  * Actually ActsAsResource doesn't support Single Table Inheritance.
+  
+  * Sometimes, when class relations are used, ActiveRecord generates a warning
+    like:
+    
+    warning: toplevel constant Bunny referenced by Carrot::Bunny
+
+Contribute
+==========
+
+  * Check out the code and test it:
+    $ svn co http://dev.23labs.net/svn/rails/plugins/acts_as_resource
+    $ rake resource
+
+  * Create a ticket to: http://dev.23labs.net/rails/trac.cgi
+
+  * Create a patch and add as attachement to the ticket.
+
+
+
+Copyright (c) 2007 Luca Guidi - 23 Labs, released under the MIT license

@@ -1,0 +1,9 @@
+bugs_bunny:
+  id: 1
+  first_name: Bugs
+  last_name: Bunny
+
+roger_rabbit:
+  id: 2
+  first_name: Roger
+  last_name: Rabbit
